@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
-import { ArrowRight, Shield, Zap, Award } from 'lucide-react'
+import { ArrowRight, Shield, Zap, Award, Globe, Layers } from 'lucide-react'
 import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 
@@ -13,8 +13,20 @@ const Hero3D = dynamic(() => import('./Hero3D').then((mod) => ({ default: mod.He
 
 const features = [
   { icon: Shield, label: 'Compra Segura', desc: 'Dinheiro de volta garantido' },
-  { icon: Zap, label: 'Entrega Rápida', desc: 'Produtos em segundos' },
+  { icon: Zap, label: 'Entrega Rápida', desc: 'Produtos digitais em segundos' },
   { icon: Award, label: 'PD Points', desc: 'Recompensas em toda compra' },
+]
+
+const categories = [
+  { icon: '🎮', label: 'Jogos' },
+  { icon: '💿', label: 'Software' },
+  { icon: '🎓', label: 'Cursos' },
+  { icon: '📚', label: 'E-books' },
+  { icon: '🎨', label: 'Design' },
+  { icon: '🎬', label: 'Streaming' },
+  { icon: '🎁', label: 'Gift Cards' },
+  { icon: '🌐', label: 'Domínios' },
+  { icon: '⚡', label: 'APIs' },
 ]
 
 export function Hero() {
@@ -36,7 +48,7 @@ export function Hero() {
             className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 border border-brand-100 rounded-full mb-6"
           >
             <span className="w-2 h-2 bg-brand-500 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-brand-700 font-display">+1M jogadores confiam</span>
+            <span className="text-sm font-medium text-brand-700 font-display">+1M usuários confiam</span>
           </motion.div>
 
           {/* Heading */}
@@ -46,9 +58,8 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-surface-900 leading-[1.1] tracking-tight"
           >
-            Compre e venda{' '}
-            <span className="gradient-text">ativos digitais</span>{' '}
-            com segurança
+            O marketplace de{' '}
+            <span className="gradient-text">tudo que é digital</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -58,7 +69,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-5 text-lg text-surface-500 leading-relaxed max-w-lg"
           >
-            Contas, keys, itens, gold e gift cards para seus jogos favoritos. Tudo intermediado com garantia de entrega.
+            Jogos, software, cursos, e-books, templates, gift cards, domínios, APIs e muito mais. Compre e venda qualquer produto digital com total segurança.
           </motion.p>
 
           {/* CTA */}
@@ -78,6 +89,25 @@ export function Hero() {
                 Comece a Vender
               </Button>
             </Link>
+          </motion.div>
+
+          {/* Category chips */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.45 }}
+            className="mt-8 flex flex-wrap gap-2"
+          >
+            {categories.map((cat) => (
+              <Link
+                key={cat.label}
+                href={`/categoria/${cat.label.toLowerCase().replace(/\s+/g, '-')}`}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-50 hover:bg-brand-50 border border-surface-200 hover:border-brand-200 rounded-full text-xs font-medium text-surface-600 hover:text-brand-700 transition-all duration-200"
+              >
+                <span>{cat.icon}</span>
+                <span>{cat.label}</span>
+              </Link>
+            ))}
           </motion.div>
 
           {/* Feature pills */}

@@ -37,7 +37,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-surface-400 text-sm leading-relaxed mb-4">
-              O marketplace líder em ativos digitais para jogos. Compre e venda contas, keys, itens e muito mais com total segurança.
+              O marketplace de tudo que é digital. Compre e venda jogos, software, cursos, e-books, templates, gift cards e muito mais com total segurança.
             </p>
             <div className="flex gap-3">
               {['Discord', 'Twitter', 'YouTube'].map((social) => (

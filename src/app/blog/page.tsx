@@ -13,7 +13,7 @@ export default function BlogPage() {
     <PageTransition>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <h1 className="font-display font-extrabold text-3xl text-surface-900 mb-2">Blog Playdex</h1>
-        <p className="text-surface-500 mb-8">Dicas, guias e novidades do mundo gaming</p>
+        <p className="text-surface-500 mb-8">Dicas, guias e novidades do mundo digital</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {mockBlog.map((post, i) => (

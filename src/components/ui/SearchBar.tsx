@@ -17,7 +17,7 @@ export function SearchBar() {
         <Search size={18} className="absolute left-3.5 text-surface-400" />
         <input
           type="text"
-          placeholder="Buscar jogos, contas, keys..."
+          placeholder="Buscar jogos, software, cursos, e-books..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setFocused(true)}

@@ -8,7 +8,7 @@ export interface Product {
   category: string
   categorySlug: string
   seller: Seller
-  type: 'account' | 'key' | 'item' | 'gold' | 'service' | 'giftcard'
+  type: 'account' | 'key' | 'item' | 'gold' | 'service' | 'giftcard' | 'license' | 'ebook' | 'course' | 'template' | 'subscription' | 'domain' | 'api' | 'streaming' | 'crypto' | 'nft'
   deliveryType: 'auto' | 'manual'
   featured: boolean
   sales: number
@@ -36,6 +36,7 @@ export interface Category {
   image: string
   productCount: number
   featured: boolean
+  icon?: string
 }
 
 export interface BlogPost {

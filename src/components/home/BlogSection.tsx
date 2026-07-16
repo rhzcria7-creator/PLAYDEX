@@ -15,7 +15,7 @@ export function BlogSection() {
             <h2 className="font-display font-extrabold text-2xl lg:text-3xl text-surface-900">
               Blog Playdex
             </h2>
-            <p className="mt-1 text-surface-500 text-sm">Dicas, guias e novidades do mundo gaming</p>
+            <p className="mt-1 text-surface-500 text-sm">Dicas, guias e novidades do mundo digital</p>
           </div>
           <Link
             href="/blog"

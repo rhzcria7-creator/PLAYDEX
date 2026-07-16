@@ -18,7 +18,7 @@ export function CategoriesGrid() {
             <h2 className="font-display font-extrabold text-2xl lg:text-3xl text-surface-900">
               Categorias Populares
             </h2>
-            <p className="mt-1 text-surface-500 text-sm">Encontre os jogos mais negociados</p>
+            <p className="mt-1 text-surface-500 text-sm">Encontre os produtos digitais mais negociados</p>
           </div>
           <Link
             href="/categorias"
@@ -42,7 +42,10 @@ export function CategoriesGrid() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                   <div className="absolute bottom-3 left-3 right-3">
-                    <h3 className="font-display font-bold text-white text-sm truncate">{category.name}</h3>
+                    <div className="flex items-center gap-1.5">
+                      {category.icon && <span className="text-base">{category.icon}</span>}
+                      <h3 className="font-display font-bold text-white text-sm truncate">{category.name}</h3>
+                    </div>
                     <p className="text-xs text-white/70">{category.productCount} anúncios</p>
                   </div>
                 </div>

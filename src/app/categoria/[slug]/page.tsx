@@ -1,7 +1,7 @@
 'use client'
 
 import { getProductsByCategory, mockProducts } from '@/data/mockProducts'
-import { mockCategories, gameSubcategories } from '@/data/mockCategories'
+import { mockCategories, digitalSubcategories } from '@/data/mockCategories'
 import { ProductCard } from '@/components/product/ProductCard'
 import { PageTransition } from '@/components/shared/PageTransition'
 import { Badge } from '@/components/ui/Badge'
@@ -53,7 +53,7 @@ export default function CategoryPage() {
 
         {/* Subcategory tabs */}
         <div className="flex gap-2 overflow-x-auto no-scrollbar mb-6 pb-2">
-          {gameSubcategories.map((sub) => (
+          {digitalSubcategories.map((sub) => (
             <button
               key={sub.name}
               className="shrink-0 px-4 py-2 bg-surface-50 border border-surface-200 rounded-xl text-sm font-medium text-surface-600 hover:bg-brand-50 hover:text-brand-600 hover:border-brand-200 transition-all"
