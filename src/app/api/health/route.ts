@@ -34,8 +34,9 @@ export async function GET() {
     try {
       await stripe.balance.retrieve()
       checks.stripe = { status: 'ok', message: 'Connected', latency: Date.now() - t0 }
-    } catch (err: any) {
-      checks.stripe = { status: 'error', message: err.message }
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Connection failed'
+      checks.stripe = { status: 'error', message }
     }
   } else {
     checks.stripe = { status: 'warning', message: 'Not configured (demo mode)' }

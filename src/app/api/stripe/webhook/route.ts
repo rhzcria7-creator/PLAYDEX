@@ -34,8 +34,6 @@ export async function POST(request: Request) {
   switch (event.type) {
     case 'checkout.session.completed': {
       const session = event.data.object
-      console.log('✅ Payment completed:', session.id)
-
       // Registrar pagamento no banco
       if (supabase) {
         // Criar registro de pagamento Stripe
@@ -87,7 +85,7 @@ export async function POST(request: Request) {
 
     case 'checkout.session.expired': {
       const session = event.data.object
-      console.log('⏰ Checkout expired:', session.id)
+      // Checkout expired: session.id, session.id)
 
       if (supabase) {
         await supabase
@@ -100,7 +98,7 @@ export async function POST(request: Request) {
 
     case 'payment_intent.succeeded': {
       const paymentIntent = event.data.object
-      console.log('✅ Payment intent succeeded:', paymentIntent.id)
+      // Payment intent succeeded:, paymentIntent.id)
 
       if (supabase) {
         await supabase
@@ -113,7 +111,7 @@ export async function POST(request: Request) {
 
     case 'payment_intent.payment_failed': {
       const paymentIntent = event.data.object
-      console.log('❌ Payment failed:', paymentIntent.id)
+      // Payment failed:, paymentIntent.id)
 
       if (supabase) {
         await supabase
@@ -139,7 +137,7 @@ export async function POST(request: Request) {
 
     case 'charge.dispute.created': {
       const dispute = event.data.object
-      console.log('⚠️ Dispute created:', dispute.id)
+      // Dispute created:, dispute.id)
 
       if (supabase) {
         await supabase
@@ -160,7 +158,7 @@ export async function POST(request: Request) {
 
     case 'charge.refunded': {
       const charge = event.data.object
-      console.log('💰 Refund processed:', charge.id)
+      // Refund processed:, charge.id)
 
       if (supabase) {
         await supabase
@@ -186,7 +184,7 @@ export async function POST(request: Request) {
     }
 
     default:
-      console.log(`Unhandled event type: ${event.type}`)
+      // Unhandled event type: ${event.type}`)
   }
 
   return NextResponse.json({ received: true })

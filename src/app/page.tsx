@@ -11,7 +11,6 @@ import { AnimatedShield, AnimatedLightning, AnimatedStar, AnimatedGlobe, WaveDiv
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
-
 export default function HomePage() {
   return (
     <PageTransition>
@@ -19,14 +18,14 @@ export default function HomePage() {
       <CategoriesGrid />
       <FeaturedProducts />
 
-      {/* How It Works — with animated SVGs */}
+      {/* Como Funciona */}
       <section className="py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInOnScroll className="text-center mb-12">
-            <h2 className="font-display font-extrabold text-3xl lg:text-4xl text-surface-900">
+            <h2 className="font-display font-extrabold text-3xl lg:text-4xl text-surface-900 dark:text-white">
               Como Funciona
             </h2>
-            <p className="text-surface-500 mt-3 max-w-lg mx-auto">
+            <p className="text-surface-500 dark:text-surface-400 mt-3 max-w-lg mx-auto">
               Comprar e vender na Playdex é simples, rápido e seguro
             </p>
           </FadeInOnScroll>
@@ -38,10 +37,10 @@ export default function HomePage() {
               { svg: <AnimatedLightning className="w-16 h-16" />, title: 'Receba na hora', desc: 'Produtos digitais com entrega automática em segundos. É rápido, é seguro, é Playdex.' },
             ].map((item, i) => (
               <ScaleInOnScroll key={item.title} delay={i * 0.15}>
-                <div className="text-center p-8 card-base hover:shadow-card-hover transition-shadow">
+                <div className="text-center p-8 card-base hover:shadow-card-hover dark:hover:shadow-dark-glow transition-shadow">
                   <div className="flex justify-center mb-4">{item.svg}</div>
-                  <h3 className="font-display font-bold text-lg text-surface-900">{item.title}</h3>
-                  <p className="text-sm text-surface-500 mt-2 leading-relaxed">{item.desc}</p>
+                  <h3 className="font-display font-bold text-lg text-surface-900 dark:text-white">{item.title}</h3>
+                  <p className="text-sm text-surface-500 dark:text-surface-400 mt-2 leading-relaxed">{item.desc}</p>
                 </div>
               </ScaleInOnScroll>
             ))}
@@ -51,7 +50,7 @@ export default function HomePage() {
 
       <WaveDivider />
 
-      {/* Stats Section */}
+      {/* Stats */}
       <section className="py-16 bg-surface-900 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -75,24 +74,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Payment methods */}
+      {/* Formas de Pagamento */}
       <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInOnScroll className="text-center mb-10">
-            <h2 className="font-display font-extrabold text-2xl lg:text-3xl text-surface-900">
+            <h2 className="font-display font-extrabold text-2xl lg:text-3xl text-surface-900 dark:text-white">
               Formas de Pagamento
             </h2>
-            <p className="text-surface-500 text-sm mt-2">Pague como preferir — tudo processado com segurança</p>
+            <p className="text-surface-500 dark:text-surface-400 text-sm mt-2">Pague como preferir — tudo processado com segurança</p>
           </FadeInOnScroll>
 
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              { name: 'PIX', desc: 'Instantâneo', color: 'bg-emerald-50 border-emerald-200 text-emerald-700' },
-              { name: 'Cartão', desc: 'Crédito/Débito', color: 'bg-blue-50 border-blue-200 text-blue-700' },
-              { name: 'Boleto', desc: 'Até 3 dias', color: 'bg-amber-50 border-amber-200 text-amber-700' },
-              { name: 'Crypto', desc: 'Bitcoin/USDT', color: 'bg-orange-50 border-orange-200 text-orange-700' },
-              { name: 'Saldo PD', desc: 'Playdex', color: 'bg-brand-50 border-brand-200 text-brand-700' },
-              { name: 'PD Points', desc: 'Recompensas', color: 'bg-purple-50 border-purple-200 text-purple-700' },
+              { name: 'PIX', desc: 'Instantâneo', color: 'bg-emerald-50 border-emerald-200 text-emerald-700 dark:bg-emerald-950/30 dark:border-emerald-800/40 dark:text-emerald-400' },
+              { name: 'Cartão', desc: 'Crédito/Débito', color: 'bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-950/30 dark:border-blue-800/40 dark:text-blue-400' },
+              { name: 'Boleto', desc: 'Até 3 dias', color: 'bg-amber-50 border-amber-200 text-amber-700 dark:bg-amber-950/30 dark:border-amber-800/40 dark:text-amber-400' },
+              { name: 'Crypto', desc: 'Bitcoin/USDT', color: 'bg-orange-50 border-orange-200 text-orange-700 dark:bg-orange-950/30 dark:border-orange-800/40 dark:text-orange-400' },
+              { name: 'Saldo PD', desc: 'Playdex', color: 'bg-brand-50 border-brand-200 text-brand-700 dark:bg-brand-950/30 dark:border-brand-800/40 dark:text-brand-400' },
+              { name: 'PD Points', desc: 'Recompensas', color: 'bg-purple-50 border-purple-200 text-purple-700 dark:bg-purple-950/30 dark:border-purple-800/40 dark:text-purple-400' },
             ].map((method, i) => (
               <motion.div
                 key={method.name}
@@ -114,7 +113,7 @@ export default function HomePage() {
       <Reviews />
       <BlogSection />
 
-      {/* CTA Section */}
+      {/* CTA */}
       <section className="py-16 lg:py-24 bg-gradient-to-br from-brand-600 to-brand-800 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{

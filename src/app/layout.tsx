@@ -6,6 +6,7 @@ import { AuthProvider } from '@/lib/auth/context'
 import { ThemeProvider } from '@/lib/theme/ThemeProvider'
 import { Toaster } from 'react-hot-toast'
 import { ScrollProgress } from '@/components/ui/AdvancedAnimations'
+import { CommandK, CommandKButton } from '@/components/ui/CommandK'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://playdex.com.br'
 
@@ -118,6 +119,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Header />
             <div className="flex-1">{children}</div>
             <Footer />
+            <CommandK />
+            <CommandKButton />
             <Toaster
               position="top-right"
               toastOptions={{
