@@ -1,225 +1,155 @@
-# 🎮 Playdex — Marketplace de Ativos Digitais para Jogos
+# 🎮 PLAYDEX — Marketplace de Produtos Digitais
 
-> Plataforma completa de compra e venda de contas, keys, itens, gold e gift cards para jogos online. Construída com Next.js 14, TypeScript, TailwindCSS, Framer Motion e React Three Fiber.
+> O marketplace de **tudo que é digital**. Compre e venda jogos, software, cursos, e-books, templates, gift cards, domínios, APIs e muito mais.
+
+![Playdex v3.1](https://img.shields.io/badge/version-3.1-blue?style=for-the-badge)
+![Next.js 14](https://img.shields.io/badge/Next.js-14.2-black?style=flat-square&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)
+![Supabase](https://img.shields.io/badge/Supabase-Auth%20%2B%20DB-green?style=flat-square&logo=supabase)
+![Stripe](https://img.shields.io/badge/Stripe-Payments-purple?style=flat-square&logo=stripe)
+
+---
+
+## 📊 Números
+
+| Métrica | Valor |
+|---|---|
+| **Páginas** | 70+ |
+| **API Routes** | 10 |
+| **Arquivos TSX/TS** | 180+ |
+| **Tabelas no banco** | 30+ |
+| **Loading states** | 100% cobertura |
+| **Error boundaries** | 100% cobertura |
+| **Dark mode** | 90%+ das páginas |
+
+---
+
+## 🛠️ Stack
+
+- **Frontend:** Next.js 14 (App Router) + React 18 + TypeScript
+- **Styling:** Tailwind CSS + Framer Motion (100% animado)
+- **3D:** React Three Fiber + Drei
+- **Backend:** Supabase (Auth + Database + Storage + Realtime)
+- **Pagamentos:** Stripe (PIX, Cartão, Boleto)
+- **Security:** CSRF, Rate Limiting, Bot Detection, Fraud Scoring, Device Fingerprint
 
 ---
 
 ## 🚀 Quick Start
 
-### Pré-requisitos
-
-- **Node.js** 18.17+
-- **npm** ou **pnpm** (recomendado: pnpm)
-
-### Instalação
-
 ```bash
-# Clone o repositório
-git clone https://github.com/seu-usuario/playdex.git
-cd playdex
+# Clone o repo
+git clone https://github.com/rhzcria7-creator/PLAYDEX.git
+cd PLAYDEX
 
-# Instale as dependências
+# Instale dependências
 npm install
-# ou
-pnpm install
 
-# Copie as variáveis de ambiente
+# Configure o .env.local (veja .env.example)
 cp .env.example .env.local
+# Edite .env.local com suas credenciais
 
-# Rode em desenvolvimento
+# Rode o projeto
 npm run dev
-# ou
-pnpm dev
 ```
 
-Acesse **http://localhost:3000** no navegador.
+### Setup automático
+1. Abra `http://localhost:3000/setup`
+2. Veja o status de todas as integrações
+3. Clique em "Criar categorias" e "Criar cupons"
+
+### Setup manual (SQL)
+1. Abra o SQL Editor no Supabase
+2. Cole o conteúdo de `supabase/schema.sql`
+3. Execute
 
 ---
 
-## 📁 Estrutura do Projeto
+## 🔑 Variáveis de Ambiente
 
-```
-playdex/
-├── public/                    # Assets estáticos
-├── src/
-│   ├── app/                   # Páginas (App Router Next.js 14)
-│   │   ├── layout.tsx         # Layout raiz
-│   │   ├── page.tsx           # Home
-│   │   ├── login/             # Login
-│   │   ├── cadastro/          # Cadastro
-│   │   ├── categorias/        # Listagem de categorias
-│   │   ├── categoria/[slug]/  # Categoria específica + produtos
-│   │   ├── produto/[id]/      # Página de produto
-│   │   ├── checkout/          # Checkout com pagamento
-│   │   ├── conta/             # Área do cliente
-│   │   │   ├── page.tsx       # Dashboard
-│   │   │   ├── compras/       # Minhas compras
-│   │   │   ├── vendas/        # Minhas vendas
-│   │   │   ├── anuncios/      # Meus anúncios
-│   │   │   ├── retiradas/     # Retiradas/saques
-│   │   │   └── verificacoes/  # Verificação KYC
-│   │   ├── anunciar/          # Criar anúncio
-│   │   ├── como-funciona/     # Como funciona
-│   │   ├── tarifas/           # Planos e tarifas
-│   │   ├── pagamentos/        # Formas de pagamento
-│   │   ├── recompensas/       # PD Points
-│   │   ├── blog/              # Blog listing
-│   │   ├── blog/[slug]/       # Blog post
-│   │   ├── faq/               # Perguntas frequentes
-│   │   ├── suporte/           # Central de ajuda
-│   │   ├── termos/            # Termos de uso
-│   │   ├── privacidade/       # Política de privacidade
-│   │   └── reembolso/         # Política de reembolso
-│   ├── components/
-│   │   ├── ui/                # Componentes reutilizáveis (Button, Card, Input, Badge, Modal, Skeleton, SearchBar)
-│   │   ├── layout/            # Header, Footer
-│   │   ├── home/              # Hero, Hero3D, CategoriesGrid, FeaturedProducts, Reviews, BlogSection
-│   │   ├── product/           # ProductCard
-│   │   └── shared/            # PageTransition
-│   ├── data/                  # Dados mock (products, categories, blog, reviews, FAQ)
-│   ├── hooks/                 # Custom hooks (useScrollAnimation)
-│   ├── lib/                   # Utilitários (cn, formatPrice, etc.)
-│   └── types/                 # TypeScript interfaces
-├── package.json
-├── tailwind.config.ts
-├── next.config.js
-├── tsconfig.json
-└── README.md
-```
+| Variável | Onde pegar |
+|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase → Settings → API |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase → Settings → API |
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase → Settings → API |
+| `STRIPE_SECRET_KEY` | Stripe → Developers → API keys |
+| `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Stripe → Developers → API keys |
+| `STRIPE_WEBHOOK_SECRET` | Stripe → Developers → Webhooks |
+| `NEXT_PUBLIC_SITE_URL` | Seu domínio |
 
 ---
 
-## 🎨 Design System
+## 📁 Estrutura
 
-### Paleta de Cores
-
-| Token | Cor | Uso |
-|-------|-----|-----|
-| `brand-600` | `#2563EB` | Cor primária (azul) |
-| `brand-500` | `#3B82F6` | Primary light |
-| `brand-700` | `#1D4ED8` | Primary dark |
-| `surface-0` | `#FFFFFF` | Background principal |
-| `surface-50` | `#F8FAFC` | Background de cards/seções |
-| `surface-900` | `#0F172A` | Texto principal |
-| `surface-500` | `#64748B` | Texto secundário |
-
-### Fontes
-
-- **Display:** Plus Jakarta Sans (700, 800)
-- **Body:** Inter (400, 500, 600)
-- **Mono:** JetBrains Mono
-
-### Componentes UI
-
-Todos os componentes estão em `/components/ui/` e usam:
-
-- **Glassmorphism:** `.glass` / `.glass-dark`
-- **Neumorphism:** `.neu-raised` / `.neu-pressed`
-- **Hover 3D:** Cards com `hover:-translate-y-1 hover:shadow-card-hover`
-- **Micro-animações:** Framer Motion em todos os botões e cards
-- **Skeleton loading:** `.skeleton` com shimmer animado
-- **Transições de página:** `PageTransition` wrapper
-
----
-
-## 🌐 Deploy na Vercel
-
-### Opção 1: Via CLI
-
-```bash
-# Instale a Vercel CLI
-npm i -g vercel
-
-# Faça deploy
-vercel
-
-# Para produção
-vercel --prod
 ```
-
-### Opção 2: Via GitHub
-
-1. Push o código para um repositório GitHub
-2. Acesse [vercel.com](https://vercel.com)
-3. Clique em "New Project" → Importe o repositório
-4. Configure as variáveis de ambiente (se necessário)
-5. Deploy!
-
-### Variáveis de Ambiente para Produção
-
-```env
-NEXT_PUBLIC_APP_URL=https://playdex.com.br
-NEXT_PUBLIC_APP_NAME=Playdex
+src/
+├── app/              # 70+ páginas (App Router)
+│   ├── admin/        # Painel administrativo
+│   ├── api/          # 10 API routes
+│   ├── auth/         # Login, cadastro, recuperação
+│   ├── checkout/     # Fluxo de pagamento Stripe
+│   └── ...           # Todas as páginas públicas
+├── components/
+│   ├── animations/   # Framer Motion components
+│   ├── home/         # Hero, Categories, Products
+│   ├── layout/       # Header, Footer
+│   ├── product/      # ProductCard
+│   ├── shared/       # PageTransition
+│   ├── svgs/         # AnimatedSVGs
+│   └── ui/           # Button, Card, Input, CommandK, ThemeToggle
+├── data/             # Mock data
+├── lib/
+│   ├── auth/         # AuthProvider + useAuth
+│   ├── security/     # Rate limit, CSRF, fraud, sanitization
+│   ├── stripe/       # Client + Server
+│   ├── supabase/     # Client + Server + Middleware
+│   └── theme/        # ThemeProvider + useTheme (dark/light)
+├── types/            # TypeScript interfaces
+└── middleware.ts      # Security + Auth middleware
 ```
 
 ---
 
-## 🛠️ Stack Técnica
+## 🔒 Segurança
 
-| Tecnologia | Versão | Uso |
-|------------|--------|-----|
-| Next.js | 14.2 | Framework React com App Router |
-| React | 18.3 | UI library |
-| TypeScript | 5.7 | Type safety |
-| TailwindCSS | 3.4 | Styling utility-first |
-| Framer Motion | 11.18 | Animações e transições |
-| React Three Fiber | 8.17 | Elemento 3D no hero |
-| @react-three/drei | 9.117 | Helpers R3F |
-| Three.js | 0.170 | 3D engine |
-| Lucide React | 0.468 | Ícones |
-| clsx | 2.1 | Class name merging |
-
----
-
-## ⚡ Performance
-
-- ✅ **Lazy loading** de imagens com `next/image`
-- ✅ **Formatos otimizados** WebP/AVIF via next.config
-- ✅ **Code splitting** automático por página
-- ✅ **3D carregado dinamicamente** com `next/dynamic` (SSR: false)
-- ✅ **CSS otimizado** com Tailwind purge
-- ✅ **Fontes otimizadas** com `next/font` (ou Google Fonts)
-- ✅ **Skeleton loading** em todas as listagens
-- ✅ **Intersection Observer** para animações on-scroll
+- ✅ CSRF Protection (Origin header validation)
+- ✅ Rate Limiting com auto-block IP
+- ✅ Bot Detection (bloqueia bots de rotas sensíveis)
+- ✅ Fraud Scoring (4 níveis: low/medium/high/critical)
+- ✅ Device Fingerprinting
+- ✅ Security Headers (CSP, HSTS, X-Frame-Options, CORS)
+- ✅ Input Sanitization (XSS, SQL Injection, Event Handlers)
+- ✅ CPF Validation
+- ✅ Password Strength Checker
+- ✅ Row Level Security (RLS) em todas as tabelas
+- ✅ KYC Verification (4 passos)
+- ✅ .env.local no .gitignore (credenciais protegidas)
 
 ---
 
-## 📋 Funcionalidades Implementadas
+## 🌙 Dark Mode
 
-- [x] Home com Hero 3D animado
-- [x] Catálogo de categorias com imagens
-- [x] Página de categoria com filtros (preço, subcategorias)
-- [x] Página de produto com galeria, preço, vendedor, garantias
-- [x] Checkout com escolha de pagamento (PIX, cartão, saldo, crypto)
-- [x] Planos de segurança (Básico, Plus, Premium)
-- [x] Login e Cadastro com autenticação social
-- [x] Dashboard da conta com estatísticas
-- [x] Minhas Compras, Vendas, Anúncios
-- [x] Retiradas com opção Normal/Turbo
-- [x] Verificação de conta (KYC)
-- [x] Criar Anúncio com escolha de plano
-- [x] Como Funciona (3 passos)
-- [x] Tarifas e Prazos com tabela
-- [x] Formas de Pagamento
-- [x] Programa de Recompensas (PD Points)
-- [x] Blog com artigos
-- [x] FAQ com categorias e accordion
-- [x] Central de Ajuda
-- [x] Termos de Uso
-- [x] Política de Privacidade
-- [x] Política de Reembolso
-- [x] Busca com autocomplete
-- [x] Mobile-first responsivo
-- [x] Animações e micro-interações
-- [x] Glassmorphism e Neumorphism
-- [x] Skeleton loading
+- Toggle no Header (animado Sun ↔ Moon)
+- Seletor em Configurações (Light / System / Dark)
+- Persistido no localStorage
+- Transições animadas
+
+---
+
+## 🔍 Features
+
+- **Command-K** (Cmd/Ctrl+K) — busca global
+- **Onboarding** — guia passo a passo
+- **Health Check** — `/api/health` + `/status`
+- **Auto Setup** — `/setup` + `/api/setup`
+- **SEO** — sitemap.xml, robots.txt, Open Graph, JSON-LD
+- **PWA** — manifest.json
+- **Wallet** — carteira digital do vendedor
+- **Export** — CSV/PDF de dados
+- **Admin Analytics** — charts e KPIs em tempo real
 
 ---
 
 ## 📄 Licença
 
-Este projeto é apenas para fins educacionais e de demonstração. Todos os dados são fictícios (mock).
-
----
-
-Feito com 💙 por **Playdex**
+Projeto proprietário. Todos os direitos reservados.

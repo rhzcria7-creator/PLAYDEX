@@ -21,24 +21,24 @@ export default function PerfilPage() {
           <div className="h-32 bg-gradient-to-r from-brand-500 to-brand-700" />
           <div className="px-6 pb-6 -mt-10">
             <div className="flex flex-col sm:flex-row sm:items-end gap-4">
-              <div className="w-20 h-20 rounded-2xl bg-white border-4 border-white shadow-lg flex items-center justify-center overflow-hidden">
+              <div className="w-20 h-20 rounded-2xl bg-white dark:bg-surface-900 border-4 border-white shadow-lg flex items-center justify-center overflow-hidden">
                 {profile?.avatar_url ? (
                   <img src={profile.avatar_url} alt="" className="w-full h-full object-cover" />
                 ) : (
-                  <span className="font-display font-extrabold text-2xl text-brand-600">{profile?.username?.[0]?.toUpperCase() || 'U'}</span>
+                  <span className="font-display font-extrabold text-2xl text-brand-600 dark:text-brand-400">{profile?.username?.[0]?.toUpperCase() || 'U'}</span>
                 )}
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2">
-                  <h1 className="font-display font-extrabold text-2xl text-surface-900">{profile?.username || 'Usuário'}</h1>
+                  <h1 className="font-display font-extrabold text-2xl text-surface-900 dark:text-white">{profile?.username || 'Usuário'}</h1>
                   {profile?.verification_status === 'verified' && (
                     <Badge variant="success">✓ Verificado</Badge>
                   )}
-                  {profile?.seller_plan === 'diamond' && <Crown size={18} className="text-brand-600" />}
+                  {profile?.seller_plan === 'diamond' && <Crown size={18} className="text-brand-600 dark:text-brand-400" />}
                 </div>
-                <p className="text-surface-500 text-sm">{profile?.bio || 'Membro da Playdex'}</p>
+                <p className="text-surface-500 dark:text-surface-400 text-sm">{profile?.bio || 'Membro da Playdex'}</p>
               </div>
-              <div className="flex items-center gap-4 text-sm text-surface-500">
+              <div className="flex items-center gap-4 text-sm text-surface-500 dark:text-surface-400">
                 <span className="flex items-center gap-1"><Calendar size={14} /> Desde {profile?.created_at?.slice(0, 4) || '2024'}</span>
               </div>
             </div>
@@ -51,9 +51,9 @@ export default function PerfilPage() {
                 { label: 'Avaliação', value: profile?.rating || 0, icon: Star },
                 { label: 'PD Points', value: profile?.pd_points || 0, icon: Crown },
               ].map((stat) => (
-                <div key={stat.label} className="text-center p-3 bg-surface-50 rounded-xl">
-                  <stat.icon size={16} className="text-brand-600 mx-auto mb-1" />
-                  <p className="font-display font-extrabold text-lg text-surface-900">
+                <div key={stat.label} className="text-center p-3 bg-surface-50 dark:bg-surface-800 rounded-xl">
+                  <stat.icon size={16} className="text-brand-600 dark:text-brand-400 mx-auto mb-1" />
+                  <p className="font-display font-extrabold text-lg text-surface-900 dark:text-white">
                     <AnimatedCounter target={stat.value} />
                   </p>
                   <p className="text-xs text-surface-400">{stat.label}</p>
@@ -65,7 +65,7 @@ export default function PerfilPage() {
 
         {/* Products */}
         <FadeInOnScroll className="mt-8">
-          <h2 className="font-display font-extrabold text-xl text-surface-900 mb-4">Produtos do Vendedor</h2>
+          <h2 className="font-display font-extrabold text-xl text-surface-900 dark:text-white mb-4">Produtos do Vendedor</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {sellerProducts.map((product) => (
               <ProductCard key={product.id} product={product} index={0} />

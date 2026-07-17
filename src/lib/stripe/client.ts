@@ -7,7 +7,7 @@ export function getStripe() {
   if (!stripePromise) {
     const key = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
     if (!key) {
-      console.warn('NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY not set')
+      // Stripe key not configured — demo mode
       return null
     }
     stripePromise = loadStripe(key)

@@ -13,10 +13,10 @@ export default function AdminStripePage() {
       <MorphingBlob className="fixed" />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 relative">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          <h1 className="font-display font-extrabold text-2xl text-surface-900 flex items-center gap-2">
-            <CreditCard size={24} className="text-brand-600" /> Stripe Dashboard
+          <h1 className="font-display font-extrabold text-2xl text-surface-900 dark:text-white flex items-center gap-2">
+            <CreditCard size={24} className="text-brand-600 dark:text-brand-400" /> Stripe Dashboard
           </h1>
-          <p className="text-surface-500 text-sm mt-1">Gerencie pagamentos e transações Stripe</p>
+          <p className="text-surface-500 dark:text-surface-400 text-sm mt-1">Gerencie pagamentos e transações Stripe</p>
         </motion.div>
 
         {/* Connection Status */}
@@ -29,10 +29,10 @@ export default function AdminStripePage() {
                 <AlertCircle size={32} className="text-amber-500" />
               )}
               <div>
-                <h3 className="font-display font-bold text-lg text-surface-900">
+                <h3 className="font-display font-bold text-lg text-surface-900 dark:text-white">
                   {isConnected ? 'Stripe Conectado' : 'Stripe Não Configurado'}
                 </h3>
-                <p className="text-sm text-surface-500 mt-1">
+                <p className="text-sm text-surface-500 dark:text-surface-400 mt-1">
                   {isConnected
                     ? 'Sua conta Stripe está conectada e processando pagamentos.'
                     : 'Configure suas credenciais Stripe para começar a receber pagamentos reais.'}
@@ -41,12 +41,12 @@ export default function AdminStripePage() {
             </div>
 
             {!isConnected && (
-              <div className="mt-4 p-4 bg-white rounded-xl">
-                <h4 className="font-display font-bold text-sm text-surface-900 mb-3">Como configurar:</h4>
-                <ol className="space-y-2 text-sm text-surface-600">
-                  <li className="flex items-start gap-2"><span className="font-bold text-brand-600">1.</span> Crie uma conta em <strong>stripe.com</strong></li>
-                  <li className="flex items-start gap-2"><span className="font-bold text-brand-600">2.</span> No Dashboard, copie a <strong>Publishable Key</strong> e a <strong>Secret Key</strong></li>
-                  <li className="flex items-start gap-2"><span className="font-bold text-brand-600">3.</span> Adicione as variáveis na Vercel:</li>
+              <div className="mt-4 p-4 bg-white dark:bg-surface-900 rounded-xl">
+                <h4 className="font-display font-bold text-sm text-surface-900 dark:text-white mb-3">Como configurar:</h4>
+                <ol className="space-y-2 text-sm text-surface-600 dark:text-surface-400">
+                  <li className="flex items-start gap-2"><span className="font-bold text-brand-600 dark:text-brand-400">1.</span> Crie uma conta em <strong>stripe.com</strong></li>
+                  <li className="flex items-start gap-2"><span className="font-bold text-brand-600 dark:text-brand-400">2.</span> No Dashboard, copie a <strong>Publishable Key</strong> e a <strong>Secret Key</strong></li>
+                  <li className="flex items-start gap-2"><span className="font-bold text-brand-600 dark:text-brand-400">3.</span> Adicione as variáveis na Vercel:</li>
                 </ol>
                 <div className="mt-3 bg-surface-900 rounded-xl p-4 font-mono text-sm">
                   <p className="text-surface-400">{'# .env ou Vercel Environment Variables'}</p>
@@ -73,7 +73,7 @@ export default function AdminStripePage() {
             <FadeInOnScroll key={stat.label} delay={i * 0.05}>
               <div className="card-base p-5">
                 <div className={`w-9 h-9 rounded-lg ${stat.color} flex items-center justify-center mb-2`}><stat.icon size={16} /></div>
-                <p className="font-display font-extrabold text-2xl text-surface-900">
+                <p className="font-display font-extrabold text-2xl text-surface-900 dark:text-white">
                   {stat.prefix || ''}<NumberTicker value={stat.value} />{stat.suffix || ''}
                 </p>
                 <p className="text-xs text-surface-400">{stat.label}</p>
@@ -85,7 +85,7 @@ export default function AdminStripePage() {
         {/* Payment Methods Accepted */}
         <FadeInOnScroll className="mt-8">
           <div className="card-base p-6">
-            <h2 className="font-display font-bold text-lg text-surface-900 mb-4">Métodos de Pagamento Aceitos</h2>
+            <h2 className="font-display font-bold text-lg text-surface-900 dark:text-white mb-4">Métodos de Pagamento Aceitos</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {[
                 { name: 'Cartão de Crédito', icon: '💳', desc: 'Visa, Mastercard, Elo, Amex' },
@@ -93,9 +93,9 @@ export default function AdminStripePage() {
                 { name: 'Boleto', icon: '📄', desc: '1-3 dias úteis' },
                 { name: 'Cartão de Débito', icon: '🏦', desc: 'Débito à vista' },
               ].map((pm) => (
-                <div key={pm.name} className="p-4 bg-surface-50 rounded-xl text-center">
+                <div key={pm.name} className="p-4 bg-surface-50 dark:bg-surface-800 rounded-xl text-center">
                   <span className="text-2xl">{pm.icon}</span>
-                  <p className="text-sm font-semibold text-surface-900 mt-1">{pm.name}</p>
+                  <p className="text-sm font-semibold text-surface-900 dark:text-white mt-1">{pm.name}</p>
                   <p className="text-xs text-surface-400">{pm.desc}</p>
                 </div>
               ))}

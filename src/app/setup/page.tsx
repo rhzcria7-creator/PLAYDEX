@@ -26,7 +26,7 @@ export default function SetupPage() {
       const data = await res.json()
       setStatus(data)
     } catch {
-      console.error('Failed to fetch setup status')
+      // Failed to fetch setup status
     }
     setLoading(false)
   }

@@ -51,7 +51,7 @@ export function CommandK() {
         const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`)
         const data = await res.json()
         if (data.products) {
-          setResults(data.products.slice(0, 6).map((p: any) => ({
+          setResults(data.products.slice(0, 6).map((p: { title: string; id: string }) => ({
             title: p.title,
             path: `/produto/${p.id}`,
             type: 'Produto',

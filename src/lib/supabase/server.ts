@@ -44,7 +44,7 @@ export function createClient() {
 export function createAdminClient() {
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
   if (!serviceRoleKey) {
-    console.warn('SUPABASE_SERVICE_ROLE_KEY not set — admin client unavailable')
+    // Admin client not configured
     return null
   }
   return createSupabaseClient(supabaseUrl, serviceRoleKey, {

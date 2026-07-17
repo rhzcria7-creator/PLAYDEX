@@ -112,7 +112,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ error: 'Invalid action. Use: seed_categories, seed_coupons' }, { status: 400 })
   } catch (error) {
-    console.error('Setup error:', error)
+    // Setup error handled
     return NextResponse.json({ error: 'Setup failed' }, { status: 500 })
   }
 }

@@ -31,17 +31,17 @@ export default function ProductPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-surface-400 mb-6">
-          <Link href="/" className="hover:text-brand-600">Início</Link>
+          <Link href="/" className="hover:text-brand-600 dark:text-brand-400">Início</Link>
           <span>/</span>
-          <Link href={`/categoria/${product.categorySlug}`} className="hover:text-brand-600">{product.category}</Link>
+          <Link href={`/categoria/${product.categorySlug}`} className="hover:text-brand-600 dark:text-brand-400">{product.category}</Link>
           <span>/</span>
-          <span className="text-surface-900 font-medium truncate max-w-[200px]">{product.title}</span>
+          <span className="text-surface-900 dark:text-white font-medium truncate max-w-[200px]">{product.title}</span>
         </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left — Image Gallery */}
           <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}>
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-surface-100 mb-3">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-surface-100 dark:bg-surface-800 mb-3">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={selectedImage}
@@ -64,13 +64,13 @@ export default function ProductPage() {
               {/* Nav arrows */}
               <button
                 onClick={() => setSelectedImage(i => (i - 1 + images.length) % images.length)}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white dark:bg-surface-900/80 backdrop-blur rounded-full flex items-center justify-center hover:bg-white dark:bg-surface-900 transition-colors shadow-lg"
               >
                 <ChevronLeft size={20} />
               </button>
               <button
                 onClick={() => setSelectedImage(i => (i + 1) % images.length)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white dark:bg-surface-900/80 backdrop-blur rounded-full flex items-center justify-center hover:bg-white dark:bg-surface-900 transition-colors shadow-lg"
               >
                 <ChevronRight size={20} />
               </button>
@@ -83,7 +83,7 @@ export default function ProductPage() {
                   key={i}
                   onClick={() => setSelectedImage(i)}
                   className={`w-20 h-16 rounded-lg overflow-hidden border-2 transition-all ${
-                    i === selectedImage ? 'border-brand-500 ring-2 ring-brand-200' : 'border-surface-200'
+                    i === selectedImage ? 'border-brand-500 ring-2 ring-brand-200' : 'border-surface-200 dark:border-surface-700'
                   }`}
                 >
                   <img src={img} alt="" className="w-full h-full object-cover" />
@@ -103,7 +103,7 @@ export default function ProductPage() {
                   <Badge variant="success">Entrega automática</Badge>
                 )}
               </div>
-              <h1 className="font-display font-extrabold text-2xl lg:text-3xl text-surface-900 leading-tight">
+              <h1 className="font-display font-extrabold text-2xl lg:text-3xl text-surface-900 dark:text-white leading-tight">
                 {product.title}
               </h1>
             </div>
@@ -115,16 +115,16 @@ export default function ProductPage() {
                   <Star key={i} size={16} className={i < Math.round(product.rating) ? 'fill-amber-400 text-amber-400' : 'text-surface-300'} />
                 ))}
               </div>
-              <span className="text-sm font-medium text-surface-900">{product.rating}</span>
+              <span className="text-sm font-medium text-surface-900 dark:text-white">{product.rating}</span>
               <span className="text-sm text-surface-400">({product.reviews} avaliações)</span>
               <span className="text-sm text-surface-400">•</span>
               <span className="text-sm text-surface-400">{product.sales} vendas</span>
             </div>
 
             {/* Price */}
-            <div className="p-5 bg-surface-50 rounded-2xl">
+            <div className="p-5 bg-surface-50 dark:bg-surface-800 rounded-2xl">
               <div className="flex items-baseline gap-3">
-                <span className="font-display font-extrabold text-3xl text-surface-900">
+                <span className="font-display font-extrabold text-3xl text-surface-900 dark:text-white">
                   R$ {product.price.toFixed(2)}
                 </span>
                 {product.originalPrice && (
@@ -138,7 +138,7 @@ export default function ProductPage() {
                   Economize R$ {(product.originalPrice! - product.price).toFixed(2)} ({discount}% de desconto)
                 </p>
               )}
-              <div className="flex items-center gap-2 mt-2 text-xs text-surface-500">
+              <div className="flex items-center gap-2 mt-2 text-xs text-surface-500 dark:text-surface-400">
                 <Truck size={14} />
                 <span>Entrega {product.deliveryType === 'auto' ? 'automática instantânea' : 'via chat pelo vendedor'}</span>
               </div>
@@ -158,7 +158,7 @@ export default function ProductPage() {
                 whileTap={{ scale: 0.9 }}
                 onClick={() => { setLiked(!liked); toast.success(liked ? 'Removido dos favoritos' : 'Adicionado aos favoritos') }}
                 className={`w-12 h-12 rounded-xl border-2 flex items-center justify-center transition-all ${
-                  liked ? 'border-red-200 bg-red-50 text-red-500' : 'border-surface-200 text-surface-400 hover:text-red-500 hover:border-red-200'
+                  liked ? 'border-red-200 bg-red-50 text-red-500' : 'border-surface-200 dark:border-surface-700 text-surface-400 hover:text-red-500 hover:border-red-200'
                 }`}
               >
                 <Heart size={20} fill={liked ? 'currentColor' : 'none'} />
@@ -167,7 +167,7 @@ export default function ProductPage() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => { navigator.clipboard.writeText(window.location.href); toast.success('Link copiado!') }}
-                className="w-12 h-12 rounded-xl border-2 border-surface-200 flex items-center justify-center text-surface-400 hover:text-brand-600 hover:border-brand-200 transition-all"
+                className="w-12 h-12 rounded-xl border-2 border-surface-200 dark:border-surface-700 flex items-center justify-center text-surface-400 hover:text-brand-600 dark:text-brand-400 hover:border-brand-200 transition-all"
               >
                 <Share2 size={20} />
               </motion.button>
@@ -176,7 +176,7 @@ export default function ProductPage() {
             {/* Trust badges */}
             <div className="grid grid-cols-3 gap-3">
               {[
-                { icon: Shield, label: 'Compra Garantida', color: 'text-brand-600 bg-brand-50' },
+                { icon: Shield, label: 'Compra Garantida', color: 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-950/50' },
                 { icon: Zap, label: 'Entrega Rápida', color: 'text-amber-600 bg-amber-50' },
                 { icon: Award, label: 'Ganhe PD Points', color: 'text-purple-600 bg-purple-50' },
               ].map((badge) => (
@@ -193,9 +193,9 @@ export default function ProductPage() {
                 <img src={product.seller.avatar} alt={product.seller.name} className="w-12 h-12 rounded-xl object-cover" />
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                    <p className="font-display font-bold text-surface-900">{product.seller.name}</p>
+                    <p className="font-display font-bold text-surface-900 dark:text-white">{product.seller.name}</p>
                     {product.seller.verified && (
-                      <span className="text-brand-600 text-xs font-semibold bg-brand-50 px-2 py-0.5 rounded-full">✓ Verificado</span>
+                      <span className="text-brand-600 dark:text-brand-400 text-xs font-semibold bg-brand-50 dark:bg-brand-950/50 px-2 py-0.5 rounded-full">✓ Verificado</span>
                     )}
                   </div>
                   <div className="flex items-center gap-3 text-xs text-surface-400 mt-0.5">
@@ -204,7 +204,7 @@ export default function ProductPage() {
                     <span>Membro desde {product.seller.memberSince}</span>
                   </div>
                 </div>
-                <Link href={`/perfil?id=${product.seller.id}`} className="text-sm text-brand-600 font-semibold hover:text-brand-700">
+                <Link href={`/perfil?id=${product.seller.id}`} className="text-sm text-brand-600 dark:text-brand-400 font-semibold hover:text-brand-700">
                   Ver perfil
                 </Link>
               </div>
@@ -214,13 +214,13 @@ export default function ProductPage() {
 
         {/* Tabs: Description & Reviews */}
         <div className="mt-12">
-          <div className="flex gap-1 border-b border-surface-200 mb-6">
+          <div className="flex gap-1 border-b border-surface-200 dark:border-surface-700 mb-6">
             {(['description', 'reviews'] as const).map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`px-5 py-3 text-sm font-display font-semibold transition-all border-b-2 ${
-                  activeTab === tab ? 'text-brand-600 border-brand-600' : 'text-surface-400 border-transparent hover:text-surface-600'
+                  activeTab === tab ? 'text-brand-600 dark:text-brand-400 border-brand-600' : 'text-surface-400 border-transparent hover:text-surface-600 dark:text-surface-400'
                 }`}
               >
                 {tab === 'description' ? 'Descrição' : `Avaliações (${product.reviews})`}
@@ -232,11 +232,11 @@ export default function ProductPage() {
             {activeTab === 'description' ? (
               <motion.div key="desc" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
                 <div className="prose max-w-none">
-                  <p className="text-surface-600 leading-relaxed">{product.description}</p>
+                  <p className="text-surface-600 dark:text-surface-400 leading-relaxed">{product.description}</p>
                 </div>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {product.tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 bg-surface-50 border border-surface-200 rounded-full text-xs font-medium text-surface-600">
+                    <span key={tag} className="px-3 py-1 bg-surface-50 dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-full text-xs font-medium text-surface-600 dark:text-surface-400">
                       #{tag}
                     </span>
                   ))}
@@ -250,7 +250,7 @@ export default function ProductPage() {
                       <div className="flex items-center gap-3 mb-2">
                         <img src={review.avatar} alt={review.user} className="w-9 h-9 rounded-full object-cover" />
                         <div>
-                          <p className="text-sm font-semibold text-surface-900">{review.user}</p>
+                          <p className="text-sm font-semibold text-surface-900 dark:text-white">{review.user}</p>
                           <div className="flex items-center gap-2">
                             <div className="flex gap-0.5">
                               {Array.from({ length: review.rating }).map((_, i) => (
@@ -261,7 +261,7 @@ export default function ProductPage() {
                           </div>
                         </div>
                       </div>
-                      <p className="text-sm text-surface-600">{review.comment}</p>
+                      <p className="text-sm text-surface-600 dark:text-surface-400">{review.comment}</p>
                     </div>
                   ))}
                 </div>
@@ -272,7 +272,7 @@ export default function ProductPage() {
 
         {/* Related Products */}
         <FadeInOnScroll className="mt-16">
-          <h2 className="font-display font-extrabold text-2xl text-surface-900 mb-6">Produtos Relacionados</h2>
+          <h2 className="font-display font-extrabold text-2xl text-surface-900 dark:text-white mb-6">Produtos Relacionados</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
             {relatedProducts.map((p) => (
               <div key={p.id} className="card-base overflow-hidden group hover:shadow-card-hover transition-shadow">
@@ -282,8 +282,8 @@ export default function ProductPage() {
                   </div>
                   <div className="p-4">
                     <p className="text-xs text-surface-400">{p.category}</p>
-                    <p className="font-display font-bold text-sm text-surface-900 mt-0.5 line-clamp-2">{p.title}</p>
-                    <p className="font-display font-extrabold text-brand-600 mt-2">R$ {p.price.toFixed(2)}</p>
+                    <p className="font-display font-bold text-sm text-surface-900 dark:text-white mt-0.5 line-clamp-2">{p.title}</p>
+                    <p className="font-display font-extrabold text-brand-600 dark:text-brand-400 mt-2">R$ {p.price.toFixed(2)}</p>
                   </div>
                 </Link>
               </div>

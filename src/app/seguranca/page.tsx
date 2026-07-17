@@ -30,10 +30,10 @@ export default function SegurancaPage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16 relative">
         <FadeInOnScroll className="text-center mb-12">
           <AnimatedShield className="w-20 h-20 mx-auto mb-4" />
-          <h1 className="font-display font-extrabold text-3xl lg:text-4xl text-surface-900">
+          <h1 className="font-display font-extrabold text-3xl lg:text-4xl text-surface-900 dark:text-white">
             <RevealText text="Segurança de Nível Bancário" />
           </h1>
-          <p className="text-surface-500 mt-3 max-w-lg mx-auto">
+          <p className="text-surface-500 dark:text-surface-400 mt-3 max-w-lg mx-auto">
             Sua segurança é nossa prioridade. Protegemos seus dados e transações com tecnologia de ponta.
           </p>
         </FadeInOnScroll>
@@ -42,10 +42,10 @@ export default function SegurancaPage() {
         <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto mb-12">
           {stats.map((stat, i) => (
             <FadeInOnScroll key={stat.label} delay={i * 0.1} className="text-center">
-              <p className="font-display font-extrabold text-3xl text-brand-600">
+              <p className="font-display font-extrabold text-3xl text-brand-600 dark:text-brand-400">
                 <NumberTicker value={stat.value} />{stat.suffix}
               </p>
-              <p className="text-xs text-surface-500 mt-1">{stat.label}</p>
+              <p className="text-xs text-surface-500 dark:text-surface-400 mt-1">{stat.label}</p>
             </FadeInOnScroll>
           ))}
         </div>
@@ -56,12 +56,12 @@ export default function SegurancaPage() {
             <StaggerItem key={feat.title}>
               <GlowCard color={feat.color as 'brand' | 'purple' | 'emerald' | 'amber'} className="p-6 h-full">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center shrink-0">
-                    <feat.icon size={22} className="text-brand-600" />
+                  <div className="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950/50 flex items-center justify-center shrink-0">
+                    <feat.icon size={22} className="text-brand-600 dark:text-brand-400" />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-lg text-surface-900">{feat.title}</h3>
-                    <p className="text-sm text-surface-500 mt-2 leading-relaxed">{feat.desc}</p>
+                    <h3 className="font-display font-bold text-lg text-surface-900 dark:text-white">{feat.title}</h3>
+                    <p className="text-sm text-surface-500 dark:text-surface-400 mt-2 leading-relaxed">{feat.desc}</p>
                   </div>
                 </div>
               </GlowCard>
@@ -79,7 +79,7 @@ export default function SegurancaPage() {
                 { title: 'Reembolso Garantido', desc: 'Se o produto não for entregue ou não corresponder à descrição, você recebe 100% do valor de volta.' },
                 { title: 'Mediação Justa', desc: 'Em caso de disputa, nossa equipe analisa as evidências de ambos os lados e toma uma decisão justa.' },
               ].map((item) => (
-                <div key={item.title} className="bg-white/10 backdrop-blur rounded-2xl p-5">
+                <div key={item.title} className="bg-white dark:bg-surface-900/10 backdrop-blur rounded-2xl p-5">
                   <CheckCircle size={24} className="text-brand-200 mb-2" />
                   <h3 className="font-display font-bold text-lg">{item.title}</h3>
                   <p className="text-brand-100 text-sm mt-2">{item.desc}</p>
@@ -91,7 +91,7 @@ export default function SegurancaPage() {
 
         {/* Anti-Hacker Section */}
         <FadeInOnScroll>
-          <h2 className="font-display font-extrabold text-2xl text-surface-900 text-center mb-8">Proteção Anti-Hacker</h2>
+          <h2 className="font-display font-extrabold text-2xl text-surface-900 dark:text-white text-center mb-8">Proteção Anti-Hacker</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { icon: Shield, label: 'Anti-DDoS', status: 'Ativo' },
@@ -101,7 +101,7 @@ export default function SegurancaPage() {
             ].map((item) => (
               <motion.div key={item.label} whileHover={{ scale: 1.03 }} className="card-base p-4 text-center">
                 <item.icon size={24} className="text-emerald-500 mx-auto mb-2" />
-                <p className="text-sm font-semibold text-surface-900">{item.label}</p>
+                <p className="text-sm font-semibold text-surface-900 dark:text-white">{item.label}</p>
                 <span className="text-xs text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full mt-1 inline-block">✓ {item.status}</span>
               </motion.div>
             ))}

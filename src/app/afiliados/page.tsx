@@ -28,8 +28,8 @@ export default function AfiliadosPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16 relative">
         <FadeInOnScroll className="text-center mb-12">
           <AnimatedRocket className="w-16 h-16 mx-auto mb-3" />
-          <h1 className="font-display font-extrabold text-3xl lg:text-4xl text-surface-900">Programa de Afiliados</h1>
-          <p className="text-surface-500 mt-3 max-w-md mx-auto">Indique amigos e ganhe comissões em cada compra que eles fizerem</p>
+          <h1 className="font-display font-extrabold text-3xl lg:text-4xl text-surface-900 dark:text-white">Programa de Afiliados</h1>
+          <p className="text-surface-500 dark:text-surface-400 mt-3 max-w-md mx-auto">Indique amigos e ganhe comissões em cada compra que eles fizerem</p>
         </FadeInOnScroll>
 
         {/* How it works */}
@@ -41,12 +41,12 @@ export default function AfiliadosPage() {
           ].map((item, i) => (
             <FadeInOnScroll key={item.step} delay={i * 0.15}>
               <GlowCard color="brand" className="p-6 text-center h-full">
-                <div className="w-12 h-12 bg-brand-50 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                  <item.icon size={22} className="text-brand-600" />
+                <div className="w-12 h-12 bg-brand-50 dark:bg-brand-950/50 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                  <item.icon size={22} className="text-brand-600 dark:text-brand-400" />
                 </div>
                 <div className="w-8 h-8 bg-brand-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 font-display font-bold text-sm">{item.step}</div>
-                <h3 className="font-display font-bold text-lg text-surface-900">{item.title}</h3>
-                <p className="text-sm text-surface-500 mt-2">{item.desc}</p>
+                <h3 className="font-display font-bold text-lg text-surface-900 dark:text-white">{item.title}</h3>
+                <p className="text-sm text-surface-500 dark:text-surface-400 mt-2">{item.desc}</p>
               </GlowCard>
             </FadeInOnScroll>
           ))}
@@ -58,14 +58,14 @@ export default function AfiliadosPage() {
             <h2 className="font-display font-extrabold text-xl mb-2">Seu Link de Afiliado</h2>
             <p className="text-brand-200 text-sm mb-4">Compartilhe este link e comece a ganhar</p>
             <div className="flex items-center gap-2">
-              <div className="flex-1 bg-white/10 backdrop-blur rounded-xl px-4 py-3 font-mono text-sm truncate">
+              <div className="flex-1 bg-white dark:bg-surface-900/10 backdrop-blur rounded-xl px-4 py-3 font-mono text-sm truncate">
                 {referralLink}
               </div>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={copyLink}
-                className="px-5 py-3 bg-white text-brand-700 font-display font-bold rounded-xl flex items-center gap-2"
+                className="px-5 py-3 bg-white dark:bg-surface-900 text-brand-700 font-display font-bold rounded-xl flex items-center gap-2"
               >
                 {copied ? <Check size={16} /> : <Copy size={16} />} {copied ? 'Copiado!' : 'Copiar'}
               </motion.button>
@@ -86,7 +86,7 @@ export default function AfiliadosPage() {
                 <div className={`w-9 h-9 rounded-lg ${stat.color} flex items-center justify-center mb-2`}>
                   <stat.icon size={16} />
                 </div>
-                <p className="font-display font-extrabold text-2xl text-surface-900">
+                <p className="font-display font-extrabold text-2xl text-surface-900 dark:text-white">
                   {stat.prefix}<NumberTicker value={stat.value} />{stat.suffix}
                 </p>
                 <p className="text-xs text-surface-400">{stat.label}</p>
@@ -97,17 +97,17 @@ export default function AfiliadosPage() {
 
         {/* Commission tiers */}
         <FadeInOnScroll>
-          <h2 className="font-display font-extrabold text-xl text-surface-900 mb-4">Níveis de Comissão</h2>
+          <h2 className="font-display font-extrabold text-xl text-surface-900 dark:text-white mb-4">Níveis de Comissão</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
               { level: 'Bronze', referrals: '0-24', commission: '5%', color: 'border-amber-300 bg-amber-50/50' },
-              { level: 'Prata', referrals: '25-99', commission: '7%', color: 'border-surface-300 bg-surface-50/50' },
+              { level: 'Prata', referrals: '25-99', commission: '7%', color: 'border-surface-300 bg-surface-50 dark:bg-surface-800/50' },
               { level: 'Ouro', referrals: '100+', commission: '10%', color: 'border-amber-400 bg-amber-50/50' },
             ].map((tier) => (
               <GlowCard key={tier.level} color="brand" className={`p-5 border-2 ${tier.color}`}>
-                <h3 className="font-display font-bold text-lg text-surface-900">{tier.level}</h3>
-                <p className="text-sm text-surface-500 mt-1">{tier.referrals} indicações</p>
-                <p className="font-display font-extrabold text-3xl text-brand-600 mt-2">{tier.commission}</p>
+                <h3 className="font-display font-bold text-lg text-surface-900 dark:text-white">{tier.level}</h3>
+                <p className="text-sm text-surface-500 dark:text-surface-400 mt-1">{tier.referrals} indicações</p>
+                <p className="font-display font-extrabold text-3xl text-brand-600 dark:text-brand-400 mt-2">{tier.commission}</p>
                 <p className="text-xs text-surface-400">por compra</p>
               </GlowCard>
             ))}
